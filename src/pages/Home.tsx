@@ -1,22 +1,66 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Calendar, MapPin, Users, Award, ArrowRight, Clock, Globe, BookOpen } from 'lucide-react';
+import { Calendar, MapPin, Users, Award, ArrowRight, Clock, BookOpen, Star } from 'lucide-react';
 import Layout from '../components/Layout/Layout';
 
 const Home = () => {
-  const keyDates = [
-    { date: 'March 15, 2024', event: 'Early Bird Registration Ends', urgent: true },
-    { date: 'April 30, 2024', event: 'Final Registration Deadline', urgent: false },
-    { date: 'May 15, 2024', event: 'Committee Assignments Released', urgent: false },
-    { date: 'June 1-3, 2024', event: 'Conference Dates', urgent: false },
+  const eventHighlights = [
+    {
+      icon: Calendar,
+      title: 'March 15-16, 2024',
+      description: 'Two days of engaging activities'
+    },
+    {
+      icon: MapPin,
+      title: 'Main Campus Auditorium',
+      description: 'Easy access with parking available'
+    },
+    {
+      icon: Users,
+      title: '500+ Participants',
+      description: 'Students and teachers from 20+ schools'
+    },
+    {
+      icon: Award,
+      title: 'Certificates & Prizes',
+      description: 'Recognition for outstanding participation'
+    }
+  ];
+
+  const schedule = [
+    {
+      time: '9:00 AM',
+      title: 'Registration & Welcome',
+      description: 'Check-in and opening ceremony'
+    },
+    {
+      time: '10:30 AM',
+      title: 'Keynote Session',
+      description: 'Inspiring talk by education leaders'
+    },
+    {
+      time: '12:00 PM',
+      title: 'Interactive Workshops',
+      description: 'Hands-on learning experiences'
+    },
+    {
+      time: '2:00 PM',
+      title: 'Panel Discussions',
+      description: 'Expert insights and Q&A sessions'
+    },
+    {
+      time: '4:00 PM',
+      title: 'Awards Ceremony',
+      description: 'Recognition and closing remarks'
+    }
   ];
 
   const stats = [
-    { icon: Users, value: '500+', label: 'Expected Delegates' },
-    { icon: Globe, value: '12', label: 'Committees' },
-    { icon: Award, value: '50+', label: 'Schools Participating' },
-    { icon: BookOpen, value: '3', label: 'Days of Debate' },
+    { icon: Users, value: '500+', label: 'Registered Participants' },
+    { icon: BookOpen, value: '20+', label: 'Schools Participating' },
+    { icon: Star, value: '15+', label: 'Expert Speakers' },
+    { icon: Award, value: '50+', label: 'Awards & Certificates' }
   ];
 
   return (
@@ -40,30 +84,31 @@ const Home = () => {
                   className="inline-flex items-center space-x-2 bg-accent-400 text-primary-900 px-4 py-2 rounded-full text-sm font-medium"
                 >
                   <Calendar className="w-4 h-4" />
-                  <span>June 1-3, 2024</span>
+                  <span>March 15-16, 2024</span>
                 </motion.div>
                 
                 <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
-                  SchoolMUN
-                  <span className="block text-accent-400">2024</span>
+                  Annual School
+                  <span className="block text-accent-400">Innovation Summit</span>
                 </h1>
                 
                 <p className="text-xl lg:text-2xl text-blue-100 leading-relaxed">
-                  Empowering tomorrow's leaders through diplomacy, debate, and global understanding.
+                  Join us for two days of inspiring workshops, expert panels, and networking 
+                  opportunities designed to shape the future of education.
                 </p>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
-                  to="/registration"
+                  to="/register"
                   className="btn-accent inline-flex items-center justify-center space-x-2 text-lg px-8 py-4"
                 >
-                  <span>Register Your School</span>
+                  <span>Register Now</span>
                   <ArrowRight className="w-5 h-5" />
                 </Link>
                 
                 <Link
-                  to="/about"
+                  to="/event-details"
                   className="btn-secondary inline-flex items-center justify-center space-x-2 text-lg px-8 py-4 bg-white/10 border-white/30 text-white hover:bg-white hover:text-primary-900"
                 >
                   <span>Learn More</span>
@@ -73,11 +118,11 @@ const Home = () => {
               <div className="flex items-center space-x-6 text-blue-100">
                 <div className="flex items-center space-x-2">
                   <MapPin className="w-5 h-5 text-accent-400" />
-                  <span>Metropolitan Convention Center</span>
+                  <span>Main Campus Auditorium</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Clock className="w-5 h-5 text-accent-400" />
-                  <span>3 Days</span>
+                  <span>2 Days</span>
                 </div>
               </div>
             </motion.div>
@@ -88,25 +133,26 @@ const Home = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-                <h3 className="text-2xl font-bold mb-6 text-center">Conference Overview</h3>
+              <div className="glass-effect rounded-2xl p-8">
+                <h3 className="text-2xl font-bold mb-6 text-center">Event Overview</h3>
                 <div className="space-y-4">
-                  <div className="flex justify-between items-center py-2 border-b border-white/20">
-                    <span className="text-blue-100">Duration</span>
-                    <span className="font-semibold">3 Days</span>
-                  </div>
-                  <div className="flex justify-between items-center py-2 border-b border-white/20">
-                    <span className="text-blue-100">Committees</span>
-                    <span className="font-semibold">12 Active</span>
-                  </div>
-                  <div className="flex justify-between items-center py-2 border-b border-white/20">
-                    <span className="text-blue-100">Expected Delegates</span>
-                    <span className="font-semibold">500+</span>
-                  </div>
-                  <div className="flex justify-between items-center py-2">
-                    <span className="text-blue-100">Registration Fee</span>
-                    <span className="font-semibold text-accent-400">$75/delegate</span>
-                  </div>
+                  {eventHighlights.map((highlight, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4 + index * 0.1 }}
+                      className="flex items-center space-x-4"
+                    >
+                      <div className="w-10 h-10 bg-accent-400 text-primary-900 rounded-lg flex items-center justify-center">
+                        <highlight.icon className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold">{highlight.title}</h4>
+                        <p className="text-blue-100 text-sm">{highlight.description}</p>
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
               </div>
             </motion.div>
@@ -137,7 +183,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Key Dates Section */}
+      {/* Schedule Preview */}
       <section className="py-16 bg-neutral-50">
         <div className="container-max section-padding">
           <motion.div
@@ -146,37 +192,34 @@ const Home = () => {
             className="text-center mb-12"
           >
             <h2 className="text-3xl lg:text-4xl font-bold text-primary-900 mb-4">
-              Important Dates & Deadlines
+              Event Schedule
             </h2>
             <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
-              Stay on track with these key milestones for SchoolMUN 2024
+              A carefully curated program designed to maximize learning and engagement
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {keyDates.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className={`card ${item.urgent ? 'border-accent-400 bg-accent-50' : ''}`}
-              >
-                <div className="flex items-center space-x-4">
-                  <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                    item.urgent ? 'bg-accent-400 text-primary-900' : 'bg-primary-100 text-primary-600'
-                  }`}>
-                    <Calendar className="w-6 h-6" />
+          <div className="max-w-4xl mx-auto">
+            <div className="space-y-6">
+              {schedule.map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="card flex items-center space-x-6"
+                >
+                  <div className="w-20 h-20 bg-primary-600 text-white rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0">
+                    {item.time.split(' ')[0]}
+                    <span className="text-xs ml-1">{item.time.split(' ')[1]}</span>
                   </div>
-                  <div>
-                    <div className={`font-semibold ${item.urgent ? 'text-primary-900' : 'text-primary-600'}`}>
-                      {item.date}
-                    </div>
-                    <div className="text-neutral-600">{item.event}</div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-primary-900 mb-2">{item.title}</h3>
+                    <p className="text-neutral-600">{item.description}</p>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -190,25 +233,26 @@ const Home = () => {
             className="max-w-3xl mx-auto space-y-8"
           >
             <h2 className="text-3xl lg:text-4xl font-bold">
-              Ready to Join SchoolMUN 2024?
+              Ready to Join the Innovation Summit?
             </h2>
             <p className="text-xl text-blue-100">
-              Don't miss out on this incredible opportunity to develop leadership skills, 
-              engage in meaningful debate, and connect with students from around the region.
+              Don't miss this opportunity to be part of an educational revolution. 
+              Register now and secure your spot at this transformative event.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                to="/registration"
+                to="/register"
                 className="btn-accent inline-flex items-center justify-center space-x-2 text-lg px-8 py-4"
               >
-                <span>Start Registration</span>
+                <span>Register Today</span>
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
-                to="/committees"
+                to="/event-details"
                 className="btn-secondary inline-flex items-center justify-center space-x-2 text-lg px-8 py-4 bg-white/10 border-white/30 text-white hover:bg-white hover:text-primary-900"
               >
-                <span>View Committees</span>
+                <BookOpen className="w-5 h-5" />
+                <span>View Details</span>
               </Link>
             </div>
           </motion.div>

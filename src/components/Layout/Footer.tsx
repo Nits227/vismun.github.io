@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, GraduationCap } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -11,12 +11,12 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-accent-400 rounded-lg flex items-center justify-center">
-                <span className="text-primary-900 font-bold text-sm">MUN</span>
+                <GraduationCap className="w-5 h-5 text-primary-900" />
               </div>
-              <span className="font-bold text-xl">SchoolMUN</span>
+              <span className="font-bold text-xl">SchoolEvent</span>
             </div>
             <p className="text-neutral-300 text-sm leading-relaxed">
-              Empowering the next generation of global leaders through Model United Nations education and diplomacy.
+              Empowering students and educators through innovative school events and educational experiences.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-neutral-300 hover:text-accent-400 transition-colors duration-200">
@@ -38,20 +38,20 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="font-semibold text-lg">Quick Links</h3>
             <div className="space-y-2">
-              <Link to="/about" className="block text-neutral-300 hover:text-accent-400 transition-colors duration-200 text-sm">
-                About the Event
+              <Link to="/" className="block text-neutral-300 hover:text-accent-400 transition-colors duration-200 text-sm">
+                Home
               </Link>
-              <Link to="/committees" className="block text-neutral-300 hover:text-accent-400 transition-colors duration-200 text-sm">
-                Committees
+              <Link to="/event-details" className="block text-neutral-300 hover:text-accent-400 transition-colors duration-200 text-sm">
+                Event Details
               </Link>
-              <Link to="/registration" className="block text-neutral-300 hover:text-accent-400 transition-colors duration-200 text-sm">
-                Registration
+              <Link to="/register" className="block text-neutral-300 hover:text-accent-400 transition-colors duration-200 text-sm">
+                Register
               </Link>
-              <Link to="/resources" className="block text-neutral-300 hover:text-accent-400 transition-colors duration-200 text-sm">
-                Resources
+              <Link to="/announcements" className="block text-neutral-300 hover:text-accent-400 transition-colors duration-200 text-sm">
+                Announcements
               </Link>
-              <Link to="/faq" className="block text-neutral-300 hover:text-accent-400 transition-colors duration-200 text-sm">
-                FAQ
+              <Link to="/contact" className="block text-neutral-300 hover:text-accent-400 transition-colors duration-200 text-sm">
+                Contact
               </Link>
             </div>
           </div>
@@ -60,9 +60,6 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="font-semibold text-lg">Support</h3>
             <div className="space-y-2">
-              <Link to="/contact" className="block text-neutral-300 hover:text-accent-400 transition-colors duration-200 text-sm">
-                Contact Us
-              </Link>
               <a href="#" className="block text-neutral-300 hover:text-accent-400 transition-colors duration-200 text-sm">
                 Help Center
               </a>
@@ -71,6 +68,9 @@ const Footer = () => {
               </a>
               <a href="#" className="block text-neutral-300 hover:text-accent-400 transition-colors duration-200 text-sm">
                 Terms of Service
+              </a>
+              <a href="#" className="block text-neutral-300 hover:text-accent-400 transition-colors duration-200 text-sm">
+                Accessibility
               </a>
             </div>
           </div>
@@ -81,7 +81,7 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-accent-400" />
-                <span className="text-neutral-300 text-sm">info@schoolmun.org</span>
+                <span className="text-neutral-300 text-sm">info@schoolevent.edu</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-accent-400" />
@@ -90,7 +90,7 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <MapPin className="w-4 h-4 text-accent-400 mt-0.5" />
                 <span className="text-neutral-300 text-sm">
-                  123 Education Ave<br />
+                  123 Education Street<br />
                   Learning City, LC 12345
                 </span>
               </div>
@@ -100,7 +100,7 @@ const Footer = () => {
 
         <div className="border-t border-primary-800 mt-8 pt-8 text-center">
           <p className="text-neutral-400 text-sm">
-            © 2024 SchoolMUN. All rights reserved. Built with passion for education and diplomacy.
+            © 2024 SchoolEvent Portal. All rights reserved. Built with passion for education.
           </p>
         </div>
       </div>

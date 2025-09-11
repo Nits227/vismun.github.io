@@ -2,17 +2,14 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import AnnouncementBanner from '../UI/AnnouncementBanner';
 
 interface LayoutProps {
   children: React.ReactNode;
-  showAnnouncement?: boolean;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children, showAnnouncement = true }) => {
+const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="min-h-screen bg-neutral-50 flex flex-col">
-      {showAnnouncement && <AnnouncementBanner />}
       <Navbar />
       <motion.main
         initial={{ opacity: 0, y: 20 }}

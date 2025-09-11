@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, User, LogOut } from 'lucide-react';
+import { Menu, X, User, LogOut, GraduationCap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../../contexts/AuthContext';
 
@@ -12,18 +12,16 @@ const Navbar = () => {
 
   const navigation = [
     { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Committees', href: '/committees' },
-    { name: 'Registration', href: '/registration' },
-    { name: 'Resources', href: '/resources' },
-    { name: 'FAQ', href: '/faq' },
+    { name: 'Event Details', href: '/event-details' },
+    { name: 'Register', href: '/register' },
+    { name: 'Announcements', href: '/announcements' },
     { name: 'Contact', href: '/contact' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
 
-  const handleSignOut = async () => {
-    await signOut();
+  const handleSignOut = () => {
+    signOut();
     setUserMenuOpen(false);
   };
 
@@ -34,9 +32,9 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">MUN</span>
+              <GraduationCap className="w-5 h-5 text-white" />
             </div>
-            <span className="font-bold text-xl text-primary-600">SchoolMUN</span>
+            <span className="font-bold text-xl text-primary-600">SchoolEvent</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -65,7 +63,7 @@ const Navbar = () => {
                   className="flex items-center space-x-2 text-neutral-600 hover:text-primary-600 transition-colors duration-200"
                 >
                   <User className="w-5 h-5" />
-                  <span className="text-sm font-medium">Dashboard</span>
+                  <span className="text-sm font-medium">{user.fullName}</span>
                 </button>
                 
                 <AnimatePresence>
@@ -76,33 +74,21 @@ const Navbar = () => {
                       exit={{ opacity: 0, y: -10 }}
                       className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-neutral-200 py-2"
                     >
+                      {user.role === 'admin' && (
+                        <Link
+                          to="/admin"
+                          className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 transition-colors duration-200"
+                          onClick={() => setUserMenuOpen(false)}
+                        >
+                          Admin Dashboard
+                        </Link>
+                      )}
                       <Link
-                        to="/dashboard"
+                        to="/profile"
                         className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 transition-colors duration-200"
                         onClick={() => setUserMenuOpen(false)}
                       >
-                        Dashboard
-                      </Link>
-                      <Link
-                        to="/dashboard/registration"
-                        className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 transition-colors duration-200"
-                        onClick={() => setUserMenuOpen(false)}
-                      >
-                        My Registration
-                      </Link>
-                      <Link
-                        to="/dashboard/delegates"
-                        className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 transition-colors duration-200"
-                        onClick={() => setUserMenuOpen(false)}
-                      >
-                        Delegates
-                      </Link>
-                      <Link
-                        to="/dashboard/documents"
-                        className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 transition-colors duration-200"
-                        onClick={() => setUserMenuOpen(false)}
-                      >
-                        Documents
+                        Profile
                       </Link>
                       <hr className="my-2 border-neutral-200" />
                       <button
@@ -117,12 +103,14 @@ const Navbar = () => {
                 </AnimatePresence>
               </div>
             ) : (
-              <Link
-                to="/login"
-                className="btn-primary"
-              >
-                Login
-              </Link>
+              <div className="flex space-x-2">
+                <Link to="/login" className="btn-secondary">
+                  Login
+                </Link>
+                <Link to="/signup" className="btn-primary">
+                  Sign Up
+                </Link>
+              </div>
             )}
           </div>
 
@@ -165,12 +153,22 @@ const Navbar = () => {
                 {user ? (
                   <>
                     <hr className="border-neutral-200" />
+                    <span className="text-sm text-neutral-500">Welcome, {user.fullName}</span>
+                    {user.role === 'admin' && (
+                      <Link
+                        to="/admin"
+                        className="text-base font-medium text-neutral-600 hover:text-primary-600 transition-colors duration-200"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        Admin Dashboard
+                      </Link>
+                    )}
                     <Link
-                      to="/dashboard"
+                      to="/profile"
                       className="text-base font-medium text-neutral-600 hover:text-primary-600 transition-colors duration-200"
                       onClick={() => setIsOpen(false)}
                     >
-                      Dashboard
+                      Profile
                     </Link>
                     <button
                       onClick={() => {
@@ -183,13 +181,22 @@ const Navbar = () => {
                     </button>
                   </>
                 ) : (
-                  <Link
-                    to="/login"
-                    className="btn-primary inline-block text-center"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Login
-                  </Link>
+                  <div className="flex flex-col space-y-2">
+                    <Link
+                      to="/login"
+                      className="btn-secondary text-center"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Login
+                    </Link>
+                    <Link
+                      to="/signup"
+                      className="btn-primary text-center"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Sign Up
+                    </Link>
+                  </div>
                 )}
               </div>
             </motion.div>
