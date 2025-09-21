@@ -1,6 +1,6 @@
 # School Event Registration Portal
 
-A comprehensive, responsive web application for managing school event registrations with modern UI/UX design and full authentication system.
+Hello everyone this is a comprehensive, responsive web application for managing school event registrations with modern UI/UX design and full authentication system.
 
 ## 🚀 Features
 
